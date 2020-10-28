@@ -21,16 +21,20 @@ module.exports = {
     res.status(200).send(messages);
   },
   update: (req, res) => {
-    const index = messages.findIndex((elem) => elem.id === +req.param.id);
+    const index = messages.findIndex((elem) => elem.id === +req.params.id);
     messages[index] = {
       id: messages[index].id,
       text: req.body.text || messages[index].text,
       time: messages[index].time,
     };
-    res.statue(200).send(messages);
+    // console.log(req.param.id)
+    // console.log(index)
+    // console.log(messages)
+    // console.log(messages[index].time)
+    res.status(200).send(messages);
   },
   delete: (req, res) => {
-    const index = messages.findIndex((elem) => elem.id === +req.param.id);
+    const index = messages.findIndex((elem) => elem.id === +req.params.id);
     messages.splice(index, 1);
     res.status(200).send(messages);
   },
